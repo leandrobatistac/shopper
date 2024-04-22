@@ -5,9 +5,11 @@ Desafio técnico para a empresa Shopper.com.br
 
 ## Instalação e Uso
 1. Clone o repositório do projeto.
-2. Execute `npm install` para instalar as dependências.
-3. Execute `nodemon` para iniciar a API na porta 3000.
-4. Execute `npm start` para iniciar o servidor de desenvolvimento na porta 3001.
+2. Inicialize um novo banco de dados com nome shopper
+3. Crie um arquivo .env na pasta backend contendo o LOGIN e PASSWORD da sua conexão com o banco de dados.
+4. Execute `npm install` para instalar as dependências.
+5. Execute `nodemon` para iniciar a API na porta 3000.
+6. Execute `npm start` para iniciar o servidor de desenvolvimento na porta 3001.
 
 ## Funcionalidades
 - **Upload de Arquivo CSV:** O usuário pode fazer upload de um arquivo CSV contendo informações sobre novos preços de produtos.
@@ -18,6 +20,7 @@ Desafio técnico para a empresa Shopper.com.br
 - React
 - Node / JavaScript
 - MySQL
+- Sequelize
 
 ## Autor
 Leandro Batista

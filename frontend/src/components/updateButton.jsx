@@ -1,12 +1,11 @@
-// UpdateButton.js
-
-import React, { useContext, useState, useEffect } from 'react';
-import { AllOkContext, ConfirmedProductsContext } from '../pages/main';
+import React, { useContext, useEffect, useState } from 'react';
+import { AllOkContext, AllProductsContext, ConfirmedProductsContext } from '../pages/main';
 import { getAllProducts } from '../services/productsService';
 
-function UpdateButton({ allProducts, setAllProducts }) {
+function UpdateButton() {
   const { allOk, setAllOk } = useContext(AllOkContext);
   const { confirmedProducts, setConfirmedProducts } = useContext(ConfirmedProductsContext);
+  const { setAllProducts } = useContext(AllProductsContext);
 
   const [isBtnDisabled, setIsBtnDisabled] = useState(allOk);
 
