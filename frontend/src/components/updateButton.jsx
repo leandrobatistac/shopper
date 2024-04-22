@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AllOkContext } from '../pages/main';
 
 function UpdateButton() {
+  const { allOk } = useContext(AllOkContext);
+  const [isBtnDisabled, setIsBtnDisabled] = useState(allOk);
+
+  useEffect(() => {
+    setIsBtnDisabled(allOk);
+  }, [allOk]);
+
   return (
     <div>
-      <button>
+      <button disabled={!isBtnDisabled}>
         Atualizar
       </button>
     </div>
