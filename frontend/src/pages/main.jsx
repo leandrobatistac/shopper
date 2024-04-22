@@ -5,20 +5,24 @@ import ValidateButton from '../components/validateButton';
 import UpdateButton from '../components/updateButton';
 
 export const FileContext = createContext();
+export const AllProductsContext = createContext();
 
 function Main() {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [allProducts, setAllProducts] = useState([]);
 
   return (
     <FileContext.Provider value={{ selectedFile, setSelectedFile }}>
-      <div>
-        <div className="button-container">
+      <AllProductsContext.Provider value={{ allProducts, setAllProducts }}>
+        <div>
           <UploadButton />
-          <ValidateButton />
           <UpdateButton />
-        </div>
           <Table />
-      </div>
+          <div className="button-container">
+          <ValidateButton />
+          </div>
+        </div>
+      </AllProductsContext.Provider>
     </FileContext.Provider>
   );
 }

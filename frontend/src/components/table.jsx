@@ -1,7 +1,19 @@
-import React from 'react';
-import mock from '../utils/mockData';
+import React, { useEffect, useContext } from 'react';
+import { AllProductsContext } from '../pages/main';
+import { getAllProducts } from '../utils/api';
 
 function Table() {
+  const { allProducts, setAllProducts } = useContext(AllProductsContext);
+
+  // GetAll em todos os produtos, e armazena em allProducts
+  useEffect(() => {
+    const fetchData = async () => {
+        const productsData = await getAllProducts();
+        setAllProducts(productsData);
+    };
+    fetchData();
+  },);
+
   return (
     <table className="table">
       <thead>
@@ -13,7 +25,7 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        { mock.map((product, i) => (
+        {allProducts.map((product, i) => (
           <tr key={i}>
             <td>{product.code}</td>
             <td>{product.name}</td>
