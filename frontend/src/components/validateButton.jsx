@@ -30,6 +30,7 @@ function ValidateButton() {
         const newPrice = parseFloat(values[1]);
         const productCode = parseInt(values[0]);
         const productExists = allProducts.some(product => product.code === productCode);
+        const prevProduct = allProducts.find(product => product.code === productCode);
         
         let newProduct = {
           code: productCode,
@@ -48,11 +49,28 @@ function ValidateButton() {
           newProduct.condition = `O código do produto ${productCode} não está presente na lista de produtos.`;
           verifyOk = false;
         } 
-        
-        else {
-          const prevProduct = allProducts.find(product => product.code === productCode);
-          newProduct.name = prevProduct ? prevProduct.name : '';
+
+        if (newPrice < prevProduct.cost_price) {
+          newProduct.condition = `O preço de venda do produto não pode ser menor que o preço de custo.`;
           newProduct.oldPrice = prevProduct ? prevProduct.sales_price : 0;
+          newProduct.name = prevProduct ? prevProduct.name : '';
+          verifyOk = false;
+        } 
+
+        const prevPriceFixed = parseFloat(prevProduct.sales_price).toFixed(2);
+        const lowerBound = parseFloat((prevPriceFixed * 0.9).toFixed(2));
+        const upperBound = parseFloat((prevPriceFixed * 1.1).toFixed(2));
+
+        if (newPrice < lowerBound || newPrice > upperBound) {
+          newProduct.condition = `O novo preço deve ser exatamente 10% a mais ou a menos que o preço atual.`;
+          newProduct.oldPrice = prevProduct ? prevProduct.sales_price : 0;
+          newProduct.name = prevProduct ? prevProduct.name : '';
+          verifyOk = false;
+        } 
+
+        else {
+          newProduct.oldPrice = prevProduct ? prevProduct.sales_price : 0;
+          newProduct.name = prevProduct ? prevProduct.name : '';
         }
 
         newProduct.newPrice = newPrice; 
