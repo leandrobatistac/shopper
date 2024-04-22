@@ -15,7 +15,7 @@ const updateProduct = async (req, res) => {
     const product = await productService.updateProduct(code, newValue);
     res.status(200).json(product);
   } catch (error) {
-    res.status(401).send({ message: errorMessage });
+    res.status(401).send({ message: error.message });
   }
 };
 

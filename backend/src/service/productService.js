@@ -13,7 +13,9 @@ async function getAllProducts() {
 async function updateProduct(code, newValue) {
   try {
     const product = await Product.findOne({ where: { code } });
-    if (!code) { throw new Error('User não encontrado'); }
+    if (!product) {
+      throw new Error('Produto não encontrado');
+    }
     product.sales_price = newValue;
     await product.save();
     return product;
