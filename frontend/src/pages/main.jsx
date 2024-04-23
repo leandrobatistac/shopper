@@ -36,9 +36,13 @@ function Main() {
           <AllOkContext.Provider value={{ allOk, setAllOk }}>
             <ConfirmedProductsContext.Provider value={{ confirmedProducts, setConfirmedProducts }}>
               <div>
+                <br />
                 <UploadButton />
+                <br />
                 <MainTable />
+                <br />
                 <UpdateButton />
+                <br />
                 <ValidateButton />
               </div>
             </ConfirmedProductsContext.Provider>

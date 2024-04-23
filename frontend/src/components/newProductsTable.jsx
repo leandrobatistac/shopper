@@ -3,6 +3,7 @@ import React from 'react';
 function NewProductsTable({newProducts}) {
   return (
     <div>
+      <br />
       {newProducts.length > 0 && (
         <table className="table">
           <thead>
